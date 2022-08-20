@@ -48,6 +48,7 @@ class JoinDate extends DateType {
                     `Value must be '${age}' > '${oldTermOfService + termOfService}'. (at calcurated 'joinDate')`
                 )
             }
+            //就業時15歳未満は非承認とする。現在の年齢から現職の勤続年数と前職の勤続年数を足して引く
             if(age - (oldTermOfService + termOfService) < 15){
                 throw new ValidationErrors.RangeError(
                     `Value must be '${age}' - '${oldTermOfService}' < 15. (at calcurated 'joinDate')`
